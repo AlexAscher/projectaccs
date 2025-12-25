@@ -1,0 +1,5 @@
+flask>=3.0.0
+flask-cors>=4.0.0
+
+#ngrok надо скачать
+#set HTTPS_PROXY=socks5://gateway:VeryStrongPassword@155.212.222.71:1080 надо написать в консоль

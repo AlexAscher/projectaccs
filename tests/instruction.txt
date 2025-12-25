@@ -1,0 +1,49 @@
+1. pip3 install -r requirements_test.txt
+
+
+
+2. Замените пароли в тестах:
+Во всех файлах в папках tests/integration/, tests/system/, tests/acceptance/ найдите строку:
+
+ADMIN_PASSWORD = "ВАШ_РЕАЛЬНЫЙ_ПАРОЛЬ_АДМИНА"
+
+Замените её на ваш настоящий пароль администратора PocketBase
+
+
+3. Убедитесь, что PocketBase и Flask API запущены:
+
+./pocketbase serve
+
+python3 api_server.py
+
+Модульные тесты (tests/unit/) не требуют запуска серверов.!!!
+
+
+
+4.Как запускать тесты
+
+Все тесты сразу
+
+# Из корня CRYPTOSITE/
+pytest
+
+
+Только модульные (без серверов)
+
+pytest tests/unit/ -v
+
+
+Системные + Приемочные (требуют PocketBase + Flask API)
+
+
+pytest tests/system/ tests/acceptance/ -v
+
+
+Требования к окружению
+Python 3.9+
+PocketBase запущен на http://127.0.0.1:8090
+Flask API запущен на http://127.0.0.1:5000
+Интернет (для моков в unit-тестах не нужен)
+
+
+

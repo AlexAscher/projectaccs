@@ -1,0 +1,3 @@
+BOT_TOKEN = "8158659359:AAE09siTtUSSsN_7tWPcU2ONKYgAZ0xHlaY"
+CRYPTOBOT_API_TOKEN = "44761:AAuylenLuQHuwvjQh1ak9PwGkLqYHrxM0Zt"
+CRYPTOBOT_API_URL = "https://testnet-pay.crypt.bot/api"

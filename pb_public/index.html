@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProjectAccs — Премиум-аккаунты с оплатой криптовалютой</title>
+    <meta
+      name="description"
+      content="Покупайте премиум-аккаунты для Postogram, TikTok и Snapchat. Безопасная оплата криптовалютой. Мгновенная доставка через Telegram."
+    />
+    <meta name="author" content="ProjectAccs" />
+    <meta
+      name="keywords"
+      content="аккаунты, криптовалюта, покупка аккаунтов, Postogram, TikTok, Snapchat, Telegram"
+    />
+
+    <meta
+      property="og:title"
+      content="ProjectAccs — Премиум-аккаунты с оплатой криптовалютой"
+    />
+    <meta
+      property="og:description"
+      content="Покупайте премиум-аккаунты с безопасной оплатой криптовалютой и мгновенной доставкой через Telegram."
+    />
+    <meta property="og:type" content="website" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container header-inner">
+        <div class="logo-wrap">
+          <div class="logo-icon">
+            <i class="lucide-wallet"></i>
+          </div>
+          <h1 class="logo-text">ProjectAccs</h1>
+        </div>
+        <div class="header-actions">
+          <button class="cart-btn" id="cartBtn">
+            <i class="lucide-shopping-cart"></i>
+            <span style="margin-left:6px; font-weight:600">Корзина</span>
+            <span class="cart-count" id="cartCount">0</span>
+          </button>
+          <button class="profile-btn" id="profileBtn">
+            <i class="lucide-user"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <span class="badge">
+          <i class="lucide-zap"></i> Мгновенная доставка • Оплата криптовалютой
+        </span>
+        <h2 class="hero-title">
+          Премиум-аккаунты
+          <span>с оплатой в криптовалюте</span>
+        </h2>
+        <p class="hero-subtitle">
+          Покупайте проверенные аккаунты для Postogram, TikTok и Snapchat.
+          Безопасная оплата криптовалютой и мгновенная доставка через
+          Telegram.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn-gradient large">
+            <i class="lucide-message-circle"></i> Начать в Telegram
+          </button>
+          <button class="btn-outline large">Посмотреть каталог</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="categories">
+      <div class="container">
+        <h3 class="section-title">Каталог аккаунтов</h3>
+        <p class="section-subtitle">Выберите платформу и регион</p>
+
+        <!-- Фильтры -->
+        <div class="filters">
+          <div class="filter-group">
+            <label class="filter-label">Платформа:</label>
+            <div class="filter-buttons">
+              <button class="filter-btn active" data-platform="all">Все</button>
+              <button class="filter-btn" data-platform="postogram">
+                <i class="lucide-instagram"></i> Postogram
+              </button>
+              <button class="filter-btn" data-platform="tiktok">
+                <i class="lucide-message-circle"></i> TikTok
+              </button>
+              <button class="filter-btn" data-platform="snapchat">
+                <i class="lucide-camera"></i> Snapchat
+              </button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">Регион:</label>
+            <div class="filter-buttons">
+              <button class="filter-btn active" data-region="all">Все</button>
+              <button class="filter-btn" data-region="USA">USA</button>
+              <button class="filter-btn" data-region="Europe">Europe</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">Прогрев:</label>
+            <div class="filter-buttons">
+              <button class="filter-btn active" data-warmup="all">Все</button>
+              <button class="filter-btn" data-warmup="30 Дней Отлёжки">30 Дней Отлёжки</button>
+              <button class="filter-btn" data-warmup="3 Дня Прогрева">3 Дня Прогрева</button>
+              <button class="filter-btn" data-warmup="7 Дней Прогрева">7 Дней Прогрева</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Каталог товаров -->
+        <div class="catalog-grid" id="catalogGrid">
+          <div class="loading-state">
+            <i class="lucide-loader"></i>
+            <p>Загрузка каталога...</p>
+          </div>
+        </div>
+
+        <!-- Loading overlay для предотвращения мерцания -->
+        <div class="catalog-loading-overlay" id="catalogLoadingOverlay" style="display: none;">
+          <div class="loading-overlay-content">
+            <i class="lucide-loader"></i>
+            <p>Обновление каталога...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="container">
+        <h3 class="section-title">Почему выбирают ProjectAccs</h3>
+        <p class="section-subtitle">Безопасность, скорость и надёжность</p>
+
+        <div class="grid features-grid">
+          <div class="card small">
+            <div class="icon small"><i class="lucide-lock"></i></div>
+            <h4>Безопасная оплата</h4>
+            <p>Все транзакции проходят через криптобота с защитой данных</p>
+          </div>
+          <div class="card small">
+            <div class="icon small"><i class="lucide-zap"></i></div>
+            <h4>Мгновенная доставка</h4>
+            <p>Получайте аккаунты сразу после подтверждения оплаты</p>
+          </div>
+          <div class="card small">
+            <div class="icon small"><i class="lucide-shield"></i></div>
+            <h4>Гарантия качества</h4>
+            <p>Каждый аккаунт проверен и готов к использованию с прокси</p>
+          </div>
+          <div class="card small">
+            <div class="icon small"><i class="lucide-clock"></i></div>
+            <h4>Доступ 24/7</h4>
+            <p>
+              Покупайте аккаунты в любое время с помощью автоматизированной
+              системы
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-card">
+          <h3>Готовы начать?</h3>
+          <p>
+            Присоединяйтесь к тысячам довольных клиентов. Подключайтесь к нашему
+            Telegram-боту и начните покупку премиум-аккаунтов уже сегодня.
+          </p>
+          <button class="btn-gradient large">
+            <i class="lucide-message-circle"></i> Открыть Telegram-бота
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile-page" id="profilePage" style="display: none">
+      <div class="container">
+        <div class="profile-header">
+          <button class="back-btn" id="backBtn">
+            <i class="lucide-arrow-left"></i> Назад
+          </button>
+          <h2>Личный кабинет</h2>
+        </div>
+
+        <div class="profile-content">
+          <div class="profile-card">
+            <div class="profile-avatar">
+              <i class="lucide-user"></i>
+            </div>
+            <h3 id="userUsername">@username</h3>
+            <p class="muted-text">
+              Telegram ID: <span id="userTelegramId">—</span>
+            </p>
+          </div>
+
+          <div class="profile-section">
+            <h3><i class="lucide-clock"></i> История активности</h3>
+            <div class="activity-list" id="activityList">
+              <p class="loading">Загрузка активности...</p>
+            </div>
+          </div>
+
+          <div class="profile-section">
+            <h3><i class="lucide-shopping-bag"></i> История заказов</h3>
+            <p class="sync-note">
+              <i class="lucide-refresh-cw"></i> Синхронизируется в реальном
+              времени
+            </p>
+            <div class="orders-list" id="ordersList">
+              <p class="loading">Загрузка заказов...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Модальное окно корзины - ЗАМЕНЕНО НА СЕКЦИЮ -->
+    <!-- Секция корзины (как отдельный экран) -->
+    <section class="cart-page" id="cartPage" style="display: none;">
+      <div class="container">
+        <div class="cart-header">
+          <button class="back-btn" id="cartBackBtn">
+            <i class="lucide-arrow-left"></i> Назад к каталогу
+          </button>
+          <h2><i class="lucide-shopping-cart"></i> Корзина</h2>
+        </div>
+
+        <div class="cart-content" id="cartPageBody">
+          <div class="empty-cart">
+            <i class="lucide-shopping-cart"></i>
+            <p>Корзина пуста</p>
+            <button class="btn-outline" id="emptyCartBackBtn">Перейти в каталог</button>
+          </div>
+        </div>
+
+        <div class="cart-page-footer" id="cartPageFooter" style="display: none;">
+          <div class="cart-summary">
+            <div class="cart-summary-row">
+              <span>Товаров:</span>
+              <span id="cartItemsCount">0</span>
+            </div>
+            <div class="cart-summary-row total">
+              <span>Итого:</span>
+              <span class="cart-total-amount" id="cartTotalAmount">0 USDT</span>
+            </div>
+          </div>
+          <div class="cart-actions">
+            <button class="btn-outline" id="clearCartBtn">
+              <i class="lucide-trash-2"></i> Очистить
+            </button>
+            <button class="btn-gradient large" id="checkoutBtn">
+              <i class="lucide-credit-card"></i> Оформить заказ
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>
+        © 2025 ProjectAccs. Все аккаунты поставляются с инструкцией по прокси.
+      </p>
+      <p class="small">Безопасная оплата криптовалютой через Crypto Bot</p>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="cart.js?v=27"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      // Инициализация иконок Lucide
+      lucide.createIcons();
+    </script>
+
+    <script>
+      const profileBtn = document.getElementById("profileBtn");
+      const backBtn = document.getElementById("backBtn");
+      const profilePage = document.getElementById("profilePage");
+      const mainContent = document.querySelectorAll(
+        ".hero, .categories, .features, .cta"
+      );
+
+      profileBtn.addEventListener("click", () => {
+        mainContent.forEach((el) => (el.style.display = "none"));
+        profilePage.style.display = "block";
+        window.scrollTo(0, 0);
+        // Загружаем данные профиля при открытии
+        if (window.authManager && window.authManager.currentUser) {
+          window.authManager.loadUserData();
+        }
+      });
+
+      backBtn.addEventListener("click", () => {
+        profilePage.style.display = "none";
+        mainContent.forEach((el) => (el.style.display = "block"));
+        window.scrollTo(0, 0);
+      });
+
+      // Каталог товаров
+      const catalogGrid = document.getElementById("catalogGrid");
+      let currentFilters = {
+        platform: "all",
+        region: "all",
+        warmup: "all"
+      };
+
+      // Обработчики фильтров
+      document.querySelectorAll('.filter-btn[data-platform]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn[data-platform]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentFilters.platform = btn.dataset.platform;
+          applyFilters();
+        });
+      });
+
+      document.querySelectorAll('.filter-btn[data-region]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn[data-region]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentFilters.region = btn.dataset.region;
+          applyFilters();
+        });
+      });
+
+      document.querySelectorAll('.filter-btn[data-warmup]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn[data-warmup]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentFilters.warmup = btn.dataset.warmup;
+          applyFilters();
+        });
+      });
+
+      // Функции для управления loading overlay каталога
+      function showCatalogLoading() {
+        const overlay = document.getElementById('catalogLoadingOverlay');
+        if (overlay) {
+          overlay.style.display = 'flex';
+        }
+      }
+
+      function hideCatalogLoading() {
+        const overlay = document.getElementById('catalogLoadingOverlay');
+        if (overlay) {
+          overlay.style.display = 'none';
+        }
+      }
+
+      // Загрузка каталога
+      async function loadCatalog() {
+        console.log('%c[loadCatalog] ═══ START ═══', 'color: cyan; font-size: 16px; font-weight: bold');
+        console.log('[loadCatalog] Called at:', new Date().toISOString());
+        console.log('[loadCatalog] Stack trace:', new Error().stack);
+
+        // Показываем loading overlay поверх каталога
+        showCatalogLoading();
+
+        // НЕ очищаем каталог сразу, чтобы избежать мерцания
+        // catalogGrid.innerHTML = '<div class="loading-state"><i class="lucide-loader"></i><p>Загрузка каталога...</p></div>';
+
+        try {
+          // Текущее время в ISO формате для сравнения с reserved_until
+          const nowISO = new Date().toISOString();
+          console.log('[loadCatalog] Current time (ISO):', nowISO);
+
+          // Загружаем products и accounts параллельно
+          // Фильтр для accounts: НЕ продан И НЕ зарезервирован (проверка reservation_id="")
+          // PocketBase фильтрует только по sold=false && reservation_id=""
+          // Клиент дополнительно проверит reserved_until
+          const perPage = 500;
+          const accountsFilter = encodeURIComponent(`sold=false && reservation_id=""`);
+          // Add cache-busting timestamp to force fresh data
+          const cacheBuster = `&_t=${Date.now()}`;
+
+          console.log('[loadCatalog] Accounts filter:', accountsFilter);
+          console.log('[loadCatalog] Decoded filter:', `sold=false && reservation_id=""`);
+
+          console.log('[loadCatalog] Fetching products and accounts...');
+
+          const [productsResponse, accountsResponse] = await Promise.all([
+            fetch(`http://127.0.0.1:8090/api/collections/products/records?expand=category&sort=title&perPage=${perPage}${cacheBuster}`, {
+              method: 'GET',
+              headers: {
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache',
+                'Expires': '0'
+              }
+            }),
+            fetch(`http://127.0.0.1:8090/api/collections/accounts/records?filter=${accountsFilter}&perPage=${perPage}${cacheBuster}`, {
+              method: 'GET',
+              headers: {
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache',
+                'Expires': '0'
+              }
+            })
+          ]);
+
+          console.log('[loadCatalog] Products response status:', productsResponse.status);
+          console.log('[loadCatalog] Accounts response status:', accountsResponse.status);
+
+          if (!productsResponse.ok || !accountsResponse.ok) {
+            throw new Error('Failed to load catalog');
+          }
+
+          const productsData = await productsResponse.json();
+          const accountsData = await accountsResponse.json();
+
+          console.log('%c[loadCatalog] Data received from API:', 'color: lime; font-weight: bold', {
+            productsCount: productsData.items.length,
+            accountsCountRaw: accountsData.items.length
+          });
+
+          // Сохраняем аккаунты глобально (только ДОСТУПНЫЕ — не проданные и не зарезервированные)
+          // ВАЖНО: Дополнительная фильтрация на клиенте, т.к. PocketBase теперь фильтрует только по reservation_id=""
+          const now = new Date();
+
+          console.log('%c[loadCatalog] ═══ CLIENT-SIDE FILTERING ═══', 'color: yellow; font-size: 14px; font-weight: bold');
+          console.log('[loadCatalog] Raw accounts from API:', accountsData.items.length);
+          console.log('[loadCatalog] Sample raw accounts (first 3):', accountsData.items.slice(0, 3).map(acc => ({
+            id: acc.id,
+            product: acc.product,
+            sold: acc.sold,
+            reservation_id: acc.reservation_id || 'EMPTY',
+            reserved_until: acc.reserved_until || 'EMPTY'
+          })));
+
+          window.allAccounts = accountsData.items.filter(acc => {
+            // Пропускаем проданные
+            if (acc.sold) {
+              console.log(`[loadCatalog] FILTERED OUT (sold): ${acc.id}`);
+              return false;
+            }
+
+            // PocketBase уже отфильтровал по reservation_id="", но дополнительно проверяем reserved_until
+            // Если есть reserved_until - проверяем истёк ли резерв
+            if (acc.reserved_until) {
+              try {
+                // PocketBase возвращает дату в формате "YYYY-MM-DD HH:MM:SS.sssZ"
+                const reservedUntil = new Date(acc.reserved_until);
+                const isExpired = reservedUntil < now;
+                if (!isExpired) {
+                  console.log(`[loadCatalog] FILTERED OUT (reserved until ${acc.reserved_until}): ${acc.id}`);
+                }
+                // Если reserved_until в прошлом - аккаунт свободен
+                return isExpired;
+              } catch (e) {
+                console.warn('Failed to parse reserved_until:', acc.reserved_until, e);
+                return false; // Если не смогли распарсить - считаем зарезервированным
+              }
+            }
+
+            // Аккаунт свободен
+            return true;
+          }) || [];
+
+          console.log('%c[loadCatalog] AFTER CLIENT FILTER:', 'color: lime; font-weight: bold');
+          console.log('[loadCatalog] Available accounts:', window.allAccounts.length);
+          console.log('[loadCatalog] Filtered out:', accountsData.items.length - window.allAccounts.length, 'accounts');
+
+          // Выведем первые 5 аккаунтов для отладки
+          if (window.allAccounts.length > 0) {
+            console.log('[loadCatalog] Sample accounts (first 5):', window.allAccounts.slice(0, 5).map(acc => ({
+              id: acc.id,
+              product: acc.product,
+              sold: acc.sold,
+              reservation_id: acc.reservation_id,
+              reserved_until: acc.reserved_until
+            })));
+
+            // Найдём аккаунты для продукта wx920gv91bjc7fi
+            const testProductAccounts = window.allAccounts.filter(acc =>
+              acc.product === 'wx920gv91bjc7fi' || (acc.product && acc.product.id === 'wx920gv91bjc7fi')
+            );
+            console.log(`[loadCatalog] 🔍 Accounts for wx920gv91bjc7fi: ${testProductAccounts.length} found`);
+            if (testProductAccounts.length > 0) {
+              console.log('[loadCatalog] First 10 wx920gv91bjc7fi accounts:', testProductAccounts.slice(0, 10).map(acc => ({
+                id: acc.id,
+                reservation_id: acc.reservation_id || 'EMPTY',
+                reserved_until: acc.reserved_until || 'EMPTY'
+              })));
+            }
+          }
+
+          // Для каждого продукта считаем количество ДОСТУПНЫХ аккаунтов
+          console.log('%c[loadCatalog] ═══ COUNTING PRODUCTS ═══', 'color: cyan; font-size: 14px; font-weight: bold');
+
+          window.allProducts = productsData.items.map(product => {
+            const count = window.allAccounts.filter(acc => {
+                // account.product can be stored as a string (id or key),
+                // or as an expanded object with id (and maybe key)
+                const accProd = acc.product;
+                const prodId = product.id;
+                const prodKey = (product.key || product.sku || '').toString();
+
+                // if acc.product is a string - it may be product.id or product.key
+                if (typeof accProd === 'string') {
+                  return accProd === prodId || (prodKey && accProd === prodKey);
+                }
+
+                // if acc.product is an object (expanded) - check id and key
+                if (accProd && typeof accProd === 'object') {
+                  if (accProd.id && accProd.id === prodId) return true;
+                  if (accProd.key && prodKey && accProd.key === prodKey) return true;
+                }
+
+                return false;
+              }).length;
+
+            console.log(`[loadCatalog] Product "${product.product_name || product.title}" (${product.id}): ${count} available accounts`);
+
+            return {
+              ...product,
+              quantity: count
+            };
+          });
+
+          console.log('%c[loadCatalog] ═══ FINAL PRODUCTS ═══', 'color: lime; font-size: 14px; font-weight: bold');
+          console.log('[loadCatalog] Total products:', window.allProducts.length);
+          console.log('[loadCatalog] Products with stock:', window.allProducts.filter(p => p.quantity > 0).length);
+          console.log('[loadCatalog] Products summary:', window.allProducts.map(p => ({
+            name: p.product_name || p.title,
+            id: p.id,
+            qty: p.quantity
+          })));
+
+          console.log('[loadCatalog] Calling renderCatalog()...');
+          renderCatalog(window.allProducts);
+          console.log('%c[loadCatalog] ═══ COMPLETED ═══', 'color: cyan; font-size: 16px; font-weight: bold');
+
+        } catch (error) {
+          console.error('%c[loadCatalog] ✗ FATAL ERROR', 'color: red; font-size: 16px; font-weight: bold', error);
+          catalogGrid.innerHTML = '<div class="error-state"><i class="lucide-alert-circle"></i><p>Ошибка загрузки каталога</p></div>';
+        } finally {
+          // Скрываем loading overlay после завершения
+          hideCatalogLoading();
+        }
+      }
+
+      // Делаем loadCatalog доступной глобально для cart.js
+      console.log('%c[index.html] Assigning window.reloadCatalog', 'color: orange; font-weight: bold');
+      window.reloadCatalog = loadCatalog;
+      console.log('[index.html] window.reloadCatalog assigned, type:', typeof window.reloadCatalog);
+
+      // Парсинг ключа продукта для определения категории, региона и прогрева
+      function parseProductKey(productKey) {
+        if (!productKey) return { platform: null, warmup: null, region: null };
+
+        const key = productKey.toLowerCase();
+
+        // Определяем платформу по префиксу
+        let platform = null;
+        if (key.startsWith('ig')) platform = 'postogram';
+        else if (key.startsWith('snap')) platform = 'snapchat';
+        else if (key.startsWith('tt')) platform = 'tiktok';
+
+        // Определяем прогрев
+        let warmup = null;
+        if (key.includes('_0')) warmup = '30 Дней Отлёжки';
+        else if (key.includes('_3')) warmup = '3 Дня Прогрева';
+        else if (key.includes('_7')) warmup = '7 Дней Прогрева';
+
+        // Определяем регион
+        let region = null;
+        if (key.includes('_us')) region = 'USA';
+        else if (key.includes('_eur')) region = 'Europe';
+
+        return { platform, warmup, region };
+      }
+
+      // Применение фильтров на клиенте
+      function applyFilters() {
+        if (!window.allProducts) return;
+
+        let filtered = window.allProducts;
+
+        // Фильтр по платформе (парсим ключ: пробуем product.key -> product.sku -> product.id)
+        if (currentFilters.platform !== 'all') {
+          filtered = filtered.filter(product => {
+            const parsed = parseProductKey(product.key || product.sku || product.id);
+            return parsed.platform === currentFilters.platform;
+          });
+        }
+
+        // Фильтр по региону (парсим ключ)
+        if (currentFilters.region !== 'all') {
+          filtered = filtered.filter(product => {
+            const parsed = parseProductKey(product.key || product.sku || product.id);
+            return parsed.region === currentFilters.region;
+          });
+        }
+
+        // Фильтр по прогреву (парсим ключ)
+        if (currentFilters.warmup !== 'all') {
+          filtered = filtered.filter(product => {
+            const parsed = parseProductKey(product.key || product.sku || product.id);
+            return parsed.warmup === currentFilters.warmup;
+          });
+        }
+
+        console.log('Filtered products:', filtered.length, 'of', window.allProducts.length);
+        console.log('Current filters:', currentFilters);
+        renderCatalog(filtered);
+      }
+
+      // Отображение товаров
+      function renderCatalog(products) {
+        if (products.length === 0) {
+          catalogGrid.innerHTML = '<div class="empty-state"><i class="lucide-package"></i><p>Товары не найдены</p></div>';
+          return;
+        }
+
+        const platformIcons = {
+          'postogram': 'instagram',
+          'tiktok': 'message-circle',
+          'snapchat': 'camera'
+        };
+
+        const platformColors = {
+          'postogram': 'purple',
+          'tiktok': 'cyan',
+          'snapchat': 'yellow'
+        };
+
+        catalogGrid.innerHTML = products.map(product => {
+          // Парсим ключ продукта для определения платформы, региона и прогрева
+          // Используем сначала product.key (sku), затем product.sku, и только потом product.id
+          const parsed = parseProductKey(product.key || product.sku || product.id);
+          const platformSlug = parsed.platform || 'postogram';
+          const regionForFilter = parsed.region || 'USA';
+          const typeOfWarm = parsed.warmup || '';
+
+          return `
+            <div class="product-card" data-product-id="${product.id}" data-platform="${platformSlug}" data-region="${regionForFilter.toLowerCase()}">
+              <div class="product-header">
+                <div class="icon ${platformColors[platformSlug] || 'purple'}">
+                  <i class="lucide-${platformIcons[platformSlug] || 'instagram'}"></i>
+                </div>
+                <span class="region-badge">${regionForFilter}</span>
+              </div>
+              <h4>${product.title || 'Товар'}</h4>
+              ${typeOfWarm ? `<div class="warmup-badge">${typeOfWarm}</div>` : ''}
+              <p class="product-description">${product.description || 'Премиум аккаунт с гарантией'}</p>
+              <div class="product-footer">
+                <div class="product-price">
+                  <span class="price-amount">${product.price || '0'}</span>
+                  <span class="price-currency">USDT</span>
+                </div>
+                <span class="stock-badge ${product.quantity > 0 ? 'in-stock' : 'out-of-stock'}" data-stock-badge="${product.id}">
+                  ${product.quantity > 0 ? `${product.quantity} шт.` : 'Нет в наличии'}
+                </span>
+              </div>
+              <div class="product-controls">
+                <div class="quantity-selector">
+                  <button class="qty-btn product-decrease" data-product-id="${product.id}" ${product.quantity === 0 ? 'disabled' : ''}>-</button>
+                  <input class="qty-input product-qty-input" type="number" min="1" max="${product.quantity}" value="1" data-product-id="${product.id}" ${product.quantity === 0 ? 'disabled' : ''} />
+                  <button class="qty-btn product-increase" data-product-id="${product.id}" ${product.quantity === 0 ? 'disabled' : ''}>+</button>
+                </div>
+
+                <button class="btn-product add-to-cart" data-product-id="${product.id}" data-product-title="${product.title}" data-product-price="${product.price}" data-type-of-warm="${product.type_of_warm || ''}" data-region-for-filter="${product.region_for_filter || ''}" ${product.quantity === 0 ? 'disabled' : ''}>
+                  <i class="lucide-plus"></i> В корзину
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        // Пересоздаём иконки Lucide после рендера
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
+      }
+
+      // Загружаем каталог при загрузке страницы
+      document.addEventListener('DOMContentLoaded', () => {
+        loadCatalog();
+      });
+    </script>
+  </body>
+</html>

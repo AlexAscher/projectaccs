@@ -1,0 +1,173 @@
+Коллекции:
+
+accounts (id: pbc_2324088501) — type: base
+id — text (PK)
+created — autodate
+updated — autodate
+data — text
+sold — bool
+product — relation → products (pbc_4092854851)
+categories (id: pbc_3292755704) — type: base
+id — text (PK)
+key — text
+name — text
+sort — number
+created — autodate
+updated — autodate
+subcategories (id: pbc_2354486458) — type: base
+id — text (PK)
+key — text
+title — text
+description — text
+category — relation → categories (pbc_3292755704)
+sort — number
+created — autodate
+updated — autodate
+regions (id: pbc_946965560) — type: base
+id — text (PK)
+key — text
+name — text
+created — autodate
+updated — autodate
+products (id: pbc_4092854851) — type: base
+id — text (PK)
+key — text
+subcategory — relation → subcategories (pbc_2354486458)
+region — relation → regions (pbc_946965560)
+title — text
+price — number
+created — autodate
+updated — autodate
+sold_accounts (id: pbc_997979991) — type: base
+id — text (PK)
+account — relation → accounts (pbc_2324088501)
+sold_at — date
+expires_at — date
+data — text
+product — relation → products (pbc_4092854851)
+created — autodate
+updated — autodate
+bot_users (id: pbc_3458397677) — type: base
+id — text (PK)
+user_id — number
+username — text
+first_name — text
+last_name — text
+first_interaction — date
+last_activity — date
+is_active — bool
+user_ref — relation → users
+created — autodate
+updated — autodate
+
+orders (planned id: pbc_1760000001) — type: base
+id — text (PK)
+created — autodate
+updated — autodate
+user — relation → users (_pb_users_auth_)
+bot_user — relation → bot_users (pbc_3458397677)
+total_amount — number
+status — text
+reserve_expires_at — date
+order_number — text
+metadata — editor
+order_items (planned id: pbc_1760000002) — type: base
+id — text (PK)
+created — autodate
+updated — autodate
+order — relation → orders (pbc_1760000001) (required in migration)
+product — relation → products (pbc_4092854851)
+unit_price — number
+quantity — number
+account — relation → accounts (pbc_2324088501)
+metadata — editor
+carts (planned id: pbc_1760000003) — type: base
+id — text (PK)
+created — autodate
+updated — autodate
+user — relation → users (_pb_users_auth_)
+cart_payload — editor
+cart_items (planned id: pbc_1760000004) — type: base
+id — text (PK)
+created — autodate
+updated — autodate
+cart — relation → carts (pbc_1760000003)
+product — relation → products (pbc_4092854851)
+quantity — number
+files (planned id: pbc_1760000005) — type: base
+id — text (PK)
+created — autodate
+updated — autodate
+order — relation → orders (pbc_1760000001)
+order_item — relation → order_items (pbc_1760000002)
+file — file
+filename — text
+audit_logs (planned id: pbc_1760000006) — type: base
+id — text (PK)
+created — autodate
+entity_type — text
+entity_id — text
+action — text
+payload — editor
+payments (planned id: pbc_9999999999 в миграции) — type: base
+id — text (PK)
+created — autodate
+updated — autodate
+invoice_id — text
+order — relation → orders (pbc_1760000001)
+user — relation → users (_pb_users_auth_)
+amount — number
+
+связи:
+
+products → accounts — один ко многим
+(один продукт может иметь много аккаунтов; поле accounts.product ссылается на products)
+
+categories → subcategories — один ко многим
+(одна категория может иметь много подкатегорий; поле subcategories.category ссылается на categories)
+
+subcategories → products — один ко многим
+(одна подкатегория может иметь много продуктов; поле products.subcategory ссылается на subcategories)
+
+regions → products — один ко многим
+(один регион может иметь много продуктов; поле products.region ссылается на regions)
+
+accounts → sold_accounts — один ко многим
+(один аккаунт может иметь много записей продаж; поле sold_accounts.account ссылается на accounts)
+
+products → sold_accounts — один ко многим
+(один продукт может фигурировать в многих продажах; поле sold_accounts.product ссылается на products)
+
+
+bot_users → orders — один ко многим
+(один bot_user может быть связан со многими заказами; поле orders.bot_user ссылается на bot_users)
+
+orders → order_items — один ко многим
+(в одном заказе может быть много позиций; поле order_items.order ссылается на orders)
+
+products → order_items — один ко многим
+(один продукт может встречаться во многих позициях заказов; поле order_items.product ссылается на products)
+
+accounts → order_items — один ко многим
+(один аккаунт может фигурировать в нескольких позициях заказов; поле order_items.account ссылается на accounts)
+
+bot_users → carts — один к одному
+(пользователь может иметь одну корзину ; поле carts.user_bot ссылается на bot_users)
+
+carts → cart_items — один ко многим
+(в одной корзине может быть много позиций; поле cart_items.cart ссылается на carts)
+
+products → cart_items — один ко многим
+(один продукт может присутствовать во многих позициях корзин; поле cart_items.product ссылается на products)
+
+orders → files — один ко многим
+(в одном заказе может быть много файлов; поле files.order ссылается на orders)
+
+order_items → files — один ко многим
+(в одной позиции заказа может быть несколько файлов; поле files.order_item ссылается на order_items)
+
+orders → payments — один ко многим
+(на один заказ может приходится один платеж; поле payments.order ссылается на orders)
+
+bot_users → payments — один ко многим
+(один пользователь может совершать много платежей; поле payments.user_bot ссылается на bot_users)

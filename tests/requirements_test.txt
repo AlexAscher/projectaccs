@@ -1,0 +1,5 @@
+# requirements-test.txt
+pytest==8.3.3
+pytest-asyncio==0.24.0
+requests==2.32.3
+freezegun==1.5.1

@@ -1,0 +1,5 @@
+user123:Passw0rd!:user123@example.com
+coolguy99:MyS3cr3tP@ss:coolguy99@mail.com
+admin2024:Adm!n2024:admin2024@domain.net
+testuser:Test12345:testuser@test.org
+alice_wonder:WonderL@nd2024:alice.wonder@wonderland.com
